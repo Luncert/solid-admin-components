@@ -1,14 +1,16 @@
 {
   "name": "solid-admin-components",
-  "version": "0.0.1a",
+  "version": "0.0.1b",
   "description": "Admin UI Components for SolidJS",
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "license": "GNU",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index/server.js",
+  "module": "./dist/index/server.js",
+  "types": "./dist/index/index.d.ts",
+  "type": "module",
   "files": [
     "dist"
   ],
@@ -24,6 +26,7 @@
   "devDependencies": {
     "solid-devtools": "^0.27.3",
     "tsup": "^8.1.0",
+    "tsup-preset-solid": "^2.2.0",
     "typescript": "^5.1.3",
     "vite": "^4.3.9",
     "vite-plugin-solid": "^2.7.0"
@@ -32,5 +35,91 @@
     "solid-icons": "^1.1.0",
     "solid-js": "^1.7.6",
     "solid-new-bucket": "^0.0.4-a"
+  },
+  "browser": {
+    "./dist/index/server.js": "./dist/index/index.js"
+  },
+  "exports": {
+    ".": {
+      "worker": {
+        "solid": "./dist/index/server.jsx",
+        "import": {
+          "types": "./dist/index/index.d.ts",
+          "default": "./dist/index/server.js"
+        }
+      },
+      "browser": {
+        "solid": {
+          "development": "./dist/index/dev.jsx",
+          "import": "./dist/index/index.jsx"
+        },
+        "development": {
+          "import": {
+            "types": "./dist/index/index.d.ts",
+            "default": "./dist/index/dev.js"
+          }
+        },
+        "import": {
+          "types": "./dist/index/index.d.ts",
+          "default": "./dist/index/index.js"
+        }
+      },
+      "deno": {
+        "solid": "./dist/index/server.jsx",
+        "import": {
+          "types": "./dist/index/index.d.ts",
+          "default": "./dist/index/server.js"
+        }
+      },
+      "node": {
+        "solid": "./dist/index/server.jsx",
+        "import": {
+          "types": "./dist/index/index.d.ts",
+          "default": "./dist/index/server.js"
+        }
+      },
+      "solid": {
+        "development": "./dist/index/dev.jsx",
+        "import": "./dist/index/index.jsx"
+      },
+      "development": {
+        "import": {
+          "types": "./dist/index/index.d.ts",
+          "default": "./dist/index/dev.js"
+        }
+      },
+      "import": {
+        "types": "./dist/index/index.d.ts",
+        "default": "./dist/index/index.js"
+      }
+    },
+    "./additional": {
+      "development": {
+        "import": {
+          "types": "./dist/additional/index.d.ts",
+          "default": "./dist/additional/dev.js"
+        }
+      },
+      "import": {
+        "types": "./dist/additional/index.d.ts",
+        "default": "./dist/additional/index.js"
+      }
+    },
+    "./shared": {
+      "import": {
+        "types": "./dist/shared/index.d.ts",
+        "default": "./dist/shared/index.js"
+      }
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "additional": [
+        "./dist/additional/index.d.ts"
+      ],
+      "shared": [
+        "./dist/shared/index.d.ts"
+      ]
+    }
   }
 }
