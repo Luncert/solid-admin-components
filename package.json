@@ -1,0 +1,34 @@
+{
+  "name": "solid-admin-components",
+  "version": "0.0.1",
+  "description": "Admin UI Components for SolidJS",
+  "scripts": {
+    "build": "tsup"
+  },
+  "license": "GNU",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+      "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luncert/solid-admin-components.git"
+  },
+  "keywords": [
+    "SolidJS",
+    "Admin",
+    "Components"
+  ],
+  "devDependencies": {
+    "solid-devtools": "^0.27.3",
+    "tsup": "^8.1.0",
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9",
+    "vite-plugin-solid": "^2.7.0"
+  },
+  "dependencies": {
+    "solid-js": "^1.7.6"
+  }
+}
