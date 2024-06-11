@@ -39,9 +39,24 @@ function useSidebarEntry() {
 }
 
 export function SidebarItem(props: {
+  /**
+   * Item key is used to identify an unique item entry.
+   */
   key: string
+
+  /**
+   * Content to display.
+   */
   label: JSX.Element
+
+  /**
+   * Left padding works as icon placeholder.
+   */
   childrenPaddingLeft?: string
+
+  /**
+   * Sub-items.
+   */
   children?: JSX.Element
 }) {
   const sidebar = useSidebar()
