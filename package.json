@@ -10,7 +10,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-      "dist"
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -29,6 +29,8 @@
     "vite-plugin-solid": "^2.7.0"
   },
   "dependencies": {
-    "solid-js": "^1.7.6"
+    "solid-icons": "^1.1.0",
+    "solid-js": "^1.7.6",
+    "solid-new-bucket": "^0.0.4-a"
   }
 }

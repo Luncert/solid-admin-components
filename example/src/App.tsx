@@ -2,8 +2,18 @@ import { createSignal } from 'solid-js'
 import solidLogo from './assets/solid.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import AppLayout from './AppLayout'
+import { Route, Router } from "@solidjs/router"
+import Home from './views/Home'
 
 function App() {
+
+  return (
+    <Router root={AppLayout}>
+      <Route path="/" />
+      <Route path="/home" component={Home} />
+    </Router>
+  )
   const [count, setCount] = createSignal(0)
 
   return (
