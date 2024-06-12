@@ -6,4 +6,8 @@
   .sac-filterbar {
     @apply flex box-border p-2 gap-2 items-end;
   }
+
+  .sac-filter {
+    @apply w-full;
+  }
 }

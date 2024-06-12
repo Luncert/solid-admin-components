@@ -1,5 +1,5 @@
 import { stampedBucket } from 'solid-new-bucket'
-import Filterbar, { createFilterUpdater } from '../../../../src/Filterbar'
+import Filterbar, { Filter } from '../../../../src/Filterbar'
 import { FilterAttributes } from '../../../../src/FilterByCriteria'
 
 interface Model {
@@ -41,17 +41,23 @@ export default function BasicList() {
 
   return (
     <div class="overflow-x-auto">
-      <Filterbar>
-        <label class="input input-bordered input-sm max-w-xs flex items-center gap-2">
-          ID
-          <input type="text" class="grow" onChange={createFilterUpdater(filters, "id")} />
-        </label>
-        <select class="select select-bordered select-sm w-full max-w-xs" onSelect={createFilterUpdater(filters, "selection")}>
-          <option disabled selected>Who shot first?</option>
-          <option>Han Solo</option>
-          <option>Greedo</option>
-        </select>
-        <button class="btn btn-sm btn-info">GO</button>
+      <Filterbar class='grid grid-cols-8' filters={filters} onSubmit={() => console.log(filters())}>
+        <Filter name="id">
+          <label class="input input-bordered input-sm flex items-center gap-2">
+            ID
+            <input type="text" class="grow" />
+          </label>
+        </Filter>
+        <Filter name="selection" class='col-span-2'>
+          <select class="select select-bordered select-sm w-full">
+            <option disabled selected>Who shot first?</option>
+            <option>Han Solo</option>
+            <option>Greedo</option>
+          </select>
+        </Filter>
+        <div>
+          <button class="btn btn-sm btn-info">GO</button>
+        </div>
       </Filterbar>
       <table class="table table-xs">
         <thead>
