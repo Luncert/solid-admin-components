@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root {
-  position: relative;
-  width: 100%;
-  height: 100%;
+@layer base {
+  html, body, #root {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@layer components {
+  .nav {
+    color: inherit;
+  }
+  .nav:hover {
+    color: inherit;
+  }
 }

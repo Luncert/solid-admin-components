@@ -9,3 +9,7 @@
 .logo.solid:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+
+.divider-zinc-500 {
+  @apply before:bg-zinc-400 after:bg-zinc-400;
+}
