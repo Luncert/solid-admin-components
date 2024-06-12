@@ -1,6 +1,7 @@
 import { RiArrowsArrowDropUpLine } from "solid-icons/ri"
 import { JSX, Show, createContext, createEffect, createMemo, splitProps, useContext } from "solid-js"
 import { Bucket, bucket, conditional, names } from 'solid-new-bucket'
+import './Sidebar.css'
 
 interface ISidebar {
   selected: Bucket<Nullable<string>>
@@ -17,7 +18,7 @@ export function Sidebar(props: {} & JSX.HTMLAttributes<HTMLDivElement>) {
   const selected = bucket<Nullable<string>>(null)
 
   return (
-    <div class={names("sidebar flex flex-col gap-y-2 w-max h-full overflow-hidden", local.class)} {...others}>
+    <div class={names("sac-sidebar", local.class)} {...others}>
       <SidebarContext.Provider value={{
         selected
       }}>
@@ -89,25 +90,25 @@ export function SidebarItem(props: {
   })
 
   return (
-    <div class={names("sidebar-item flex flex-col", conditional(expanded(), "gap-2"))}>
+    <div class={names("sac-sidebar-item", conditional(expanded(), "gap-2"))}>
       <div class={
         names(
-          "sidebar-item-label flex gap-2 items-center justify-center rounded-md p-2 cursor-pointer transition-all hover:bg-blue-500",
-          sidebar.selected() === key ? "bg-blue-500 text-white" : "text-zinc-400",
+          "sac-sidebar-item-label",
+          conditional(sidebar.selected() === key, "selected"),
           conditional(entry, "pl-8")
         )
       }
       onClick={() => sidebar.selected(key)}>
         {props.label}
-        <div class={names("ml-auto transition-all origin-center", expanded() ? "rotate-180" : "rotate-0")}>
+        <div class={names("sac-sidebar-item-expand-indicator", expanded() ? "rotate-180" : "rotate-0")}>
           <Show when={props.children}>
             <RiArrowsArrowDropUpLine />
           </Show>
         </div>
       </div>
-      <div class="sidebar-item-expand overflow-hidden h-[0px] transition-all duration-150"
+      <div class="sac-sidebar-item-expand"
         ref={el => childrenContainer = el}>
-        <div class="flex flex-col gap-2 max-h-content" style={{
+        <div class="sac-sidebar-item-expand-content" style={{
           "padding-left": props.childrenPaddingLeft
         }}>
           <SidebarEntryContext.Provider value={{

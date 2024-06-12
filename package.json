@@ -1,6 +1,6 @@
 {
   "name": "solid-admin-components",
-  "version": "0.0.1g",
+  "version": "0.0.2a",
   "description": "Admin UI Components for SolidJS",
   "scripts": {
     "build": "tsup",

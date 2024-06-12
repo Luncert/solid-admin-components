@@ -24,9 +24,10 @@ export default function AppLayout(props: {
         <SidebarItem key="home" label={
           <div class="flex items-center gap-2">
             <BiSolidDashboard />
-            <span>首页</span>
+            <span>Home</span>
           </div>
         }>
+          <SidebarItem key="subMenu" label="Sub Menu" />
         </SidebarItem>
       </Sidebar>
       <div class="relative w-full h-full shrink">
