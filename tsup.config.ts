@@ -46,5 +46,8 @@ export default defineConfig(config => {
         preset.writePackageJson(package_fields)
     }
 
-    return preset.generateTsupOptions(parsed_data)
+    return Object.assign(preset.generateTsupOptions(parsed_data), {
+        dts: true,
+        sourcemap: true,
+    })
 })
