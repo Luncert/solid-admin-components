@@ -11,7 +11,7 @@ export default function AppLayout(props: {
   children?: JSX.Element
 }) {
   return (
-    <div class="relative flex w-full h-full gap-1">
+    <div class="relative overflow-hidden flex w-full h-full gap-1">
       <Sidebar class="shrink-0 p-2 gap-1 bg-zinc-900">
         <div class="flex flex-col p-2 gap-2">
           <div class="flex justify-center gap-2">
@@ -57,7 +57,6 @@ export default function AppLayout(props: {
       </Sidebar>
       <div class="flex flex-col w-full h-full shrink bg-zinc-100">
         <Header />
-        <div class="divider divider-zinc-500 m-0" />
         <div class="shrink w-full h-full p-2">
           {props.children}
         </div>
@@ -68,14 +67,29 @@ export default function AppLayout(props: {
 
 function Header() {
   return (
-    <div class="p-2 shrink-0">
-      <div class="max-w-md text-sm breadcrumbs text-zinc-500">
+    <div class="flex box-sizing items-center shrink-0 border border-b-zinc-500">
+      <div class="max-w-md text-sm breadcrumbs text-zinc-500 p-2">
         <ul>
           <li>Long text 1</li>
           <li>Long text 2</li>
           <li>Long text 3</li>
           <li>Long text 4</li>
           <li>Long text 5</li>
+        </ul>
+      </div>
+
+      <div class="dropdown dropdown-end dropdown-hover ml-auto">
+        <div tabindex="0" role="button" class="flex items-center gap-2 p-2">
+          <div class="avatar">
+            <div class="w-8 rounded">
+              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            </div>
+          </div>
+          <span>Serati Ma</span>
+        </div>
+        <ul tabindex="0" class="dropdown-content bg-base-900 z-100 menu p-2 shadow rounded-box w-52">
+          <li><a>Item 1</a></li>
+          <li><a>Item 2</a></li>
         </ul>
       </div>
     </div>
