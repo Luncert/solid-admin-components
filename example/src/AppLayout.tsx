@@ -87,7 +87,7 @@ function Header() {
           </div>
           <span>Serati Ma</span>
         </div>
-        <ul tabindex="0" class="dropdown-content bg-base-900 z-100 menu p-2 shadow rounded-box w-52">
+        <ul tabindex="0" class="dropdown-content bg-zinc-100 z-[1] menu p-2 shadow rounded-box w-52">
           <li><a>Item 1</a></li>
           <li><a>Item 2</a></li>
         </ul>
