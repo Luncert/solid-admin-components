@@ -1,8 +1,58 @@
+import { stampedBucket } from 'solid-new-bucket'
+import Filterbar, { createFilterUpdater } from '../../../../src/Filterbar'
+import { FilterAttributes } from '../../../../src/FilterByCriteria'
 
+interface Model {
+  id?: string
+  selection?: string
+}
 
 export default function BasicList() {
+  const filters = stampedBucket<FilterAttributes<Model>>({
+    id: {
+      match: {
+        operator: "=",
+      },
+      sort: {
+        order: "asc",
+        active: true
+      },
+      columnControl: {
+        visible: true
+      }
+    },
+    selection: {
+      match: {
+        operator: "like",
+      },
+      sort: {
+        order: "asc",
+        active: true
+      },
+      columnControl: {
+        visible: true
+      },
+      associate: {
+        modelName: "externalView",
+        fieldName: "externalView.fieldName"
+      }
+    }
+  })
+
   return (
     <div class="overflow-x-auto">
+      <Filterbar>
+        <label class="input input-bordered input-sm max-w-xs flex items-center gap-2">
+          ID
+          <input type="text" class="grow" onChange={createFilterUpdater(filters, "id")} />
+        </label>
+        <select class="select select-bordered select-sm w-full max-w-xs" onSelect={createFilterUpdater(filters, "selection")}>
+          <option disabled selected>Who shot first?</option>
+          <option>Han Solo</option>
+          <option>Greedo</option>
+        </select>
+        <button class="btn btn-sm btn-info">GO</button>
+      </Filterbar>
       <table class="table table-xs">
         <thead>
           <tr>

@@ -68,7 +68,7 @@ export default function AppLayout(props: {
 function Header() {
   return (
     <div class="flex box-sizing items-center shrink-0 border border-b-zinc-500">
-      <div class="max-w-md text-sm breadcrumbs text-zinc-500 p-2">
+      <div class="text-sm breadcrumbs text-zinc-500 p-2">
         <ul>
           <li>Long text 1</li>
           <li>Long text 2</li>
