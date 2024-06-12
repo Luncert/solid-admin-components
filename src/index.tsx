@@ -1,3 +1,3 @@
 import './global.css'
 
-export * from "./Sidebar"
+export * from "./components/Sidebar"

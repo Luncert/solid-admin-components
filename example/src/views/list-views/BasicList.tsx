@@ -1,6 +1,6 @@
 import { stampedBucket } from 'solid-new-bucket'
-import Filterbar, { Filter } from '../../../../src/Filterbar'
-import { FilterAttributes } from '../../../../src/FilterByCriteria'
+import Filterbar, { Filter } from '../../../../src/components/Filterbar'
+import { FilterAttributes } from '../../../../src/components/FilterByCriteria'
 
 interface Model {
   id?: string

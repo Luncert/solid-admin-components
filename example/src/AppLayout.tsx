@@ -1,6 +1,6 @@
 import { BiSolidDashboard } from "solid-icons/bi"
 import { JSX } from "solid-js"
-import { Sidebar, SidebarItem } from "../../src/Sidebar"
+import { Sidebar, SidebarItem } from "../../src/components/Sidebar"
 import solidLogo from './assets/solid.svg'
 import viteLogo from '/vite.svg'
 import { RiSystemAddCircleFill } from "solid-icons/ri"
