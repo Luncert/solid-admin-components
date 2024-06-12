@@ -22,7 +22,7 @@ const preset_options: preset.PresetOptions = {
         },
         {
             entry: 'src/shared.ts',
-        },
+        }
     ],
     // Set to `true` to remove all `console.*` calls and `debugger` statements in prod builds
     drop_console: true,
@@ -37,6 +37,10 @@ export default defineConfig(config => {
 
     if (!watching) {
         const package_fields = preset.generatePackageExports(parsed_data)
+        package_fields.exports['./styles'] = {
+            "import": "./dist/index/index.css",
+            "require": "./dist/index/index.css"
+        }
 
         console.log(`\npackage.json: \n${JSON.stringify(package_fields, null, 2)}\n\n`)
 
@@ -49,5 +53,6 @@ export default defineConfig(config => {
     return Object.assign(preset.generateTsupOptions(parsed_data), {
         dts: true,
         sourcemap: true,
+        clean: true
     })
 })

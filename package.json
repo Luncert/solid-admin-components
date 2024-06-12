@@ -1,6 +1,6 @@
 {
   "name": "solid-admin-components",
-  "version": "0.0.1f",
+  "version": "0.0.1g",
   "description": "Admin UI Components for SolidJS",
   "scripts": {
     "build": "tsup",
@@ -115,6 +115,10 @@
         "types": "./dist/shared/index.d.ts",
         "default": "./dist/shared/index.js"
       }
+    },
+    "./styles": {
+      "import": "./dist/index/index.css",
+      "require": "./dist/index/index.css"
     }
   },
   "typesVersions": {
