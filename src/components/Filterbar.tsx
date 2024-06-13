@@ -13,7 +13,7 @@ function useFilterbar() {
   return useContext(FilterbarContext)
 }
 
-export default function Filterbar<T>(props: {
+export function Filterbar<T>(props: {
   filters: StampedBucket<FilterAttributes<T>>
   onSubmit?(): void
   class?: string

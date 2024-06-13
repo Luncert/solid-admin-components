@@ -1,6 +1,5 @@
 import { stampedBucket } from 'solid-new-bucket'
-import Filterbar, { Filter } from '../../../../src/components/Filterbar'
-import { FilterAttributes } from '../../../../src/components/FilterByCriteria'
+import { Filterbar, Filter, FilterAttributes, Table } from '../../../../src'
 
 interface Model {
   id?: string
@@ -59,6 +58,9 @@ export default function BasicList() {
           <button class="btn btn-sm btn-info">GO</button>
         </div>
       </Filterbar>
+      <Table>
+        
+      </Table>
       <table class="table table-xs">
         <thead>
           <tr>

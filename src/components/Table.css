@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .sac-table {
+
+  }
+
+  .sac-table-actions {
+    @apply flex justify-end gap-2;
+  }
+}
+
+@layer components {
+  
+  .btn-text {
+    @apply bg-inherit border-0 shadow-none;
+  }
+}

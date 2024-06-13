@@ -11,7 +11,7 @@ export default function AppLayout(props: {
   children?: JSX.Element
 }) {
   return (
-    <div class="relative overflow-hidden flex w-full h-full gap-1">
+    <div class="relative overflow-hidden flex w-full h-full">
       <Sidebar class="shrink-0 p-2 gap-1 bg-zinc-900">
         <div class="flex flex-col p-2 gap-2">
           <div class="flex justify-center gap-2">
@@ -57,7 +57,7 @@ export default function AppLayout(props: {
       </Sidebar>
       <div class="flex flex-col w-full h-full shrink bg-zinc-100">
         <Header />
-        <div class="shrink w-full h-full p-2">
+        <div class="shrink w-full h-full">
           {props.children}
         </div>
       </div>
