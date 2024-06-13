@@ -1,18 +1,22 @@
 
 export type FilterByOperator = "=" | "!=" | ">" | ">=" | "<" | "<=" | "like" | "between" | "startsWith" | "endsWith" | "in";
 
+export interface FilterSortAttribute {
+  order: 'asc' | 'desc'
+  active: boolean
+}
+
+export interface FilterColumnAttribute {
+  visible: boolean
+}
+
 export interface FilterAttribute {
   match?: {
-    operator: FilterByOperator;
-    value?: any;
+    operator: FilterByOperator
+    value?: any
   }
-  sort?: {
-    order: 'asc' | 'desc';
-    active: boolean;
-  }
-  columnControl?: {
-    visible: boolean;
-  }
+  sort?: FilterSortAttribute
+  columnControl?: FilterColumnAttribute
   associate?: {
     modelName: string
     fieldName: string
