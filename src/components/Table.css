@@ -10,11 +10,15 @@
   .sac-table-actions {
     @apply flex justify-end gap-2;
   }
+
+  .checkbox-main {
+    @appy border-sky-300 checked:border-slate-100;
+  }
 }
 
 @layer components {
-  
-  .btn-text {
-    @apply bg-inherit border-0 shadow-none;
+
+  .checkbox-sky-600 {
+    @apply border-sky-600 checked:border-slate-100 [--chkbg:theme(colors.sky.600)] [--chkfg:theme(colors.slate.100)];
   }
 }

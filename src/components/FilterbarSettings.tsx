@@ -32,7 +32,7 @@ export default function FilterbarSettings<T>(props: {
       <dialog id="filterbar-settings-modal" class="modal">
         <div class="modal-box">
           <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-square btn-ghost absolute right-2 top-2">✕</button>
           </form>
           <h3 class="font-bold text-lg">page-settings</h3>
           <div role="tablist" class="tabs tabs-bordered">
@@ -59,7 +59,7 @@ function SortSettings(props: {
 }) {
   return (
     <div class="overflow-x-auto">
-      <table class="table table-pin-rows table-pin-cols">
+      <table class="table table-pin-rows">
         <thead>
           <tr>
             <th></th>
@@ -74,7 +74,7 @@ function SortSettings(props: {
               <th>{idx() + 1}</th>
               <td>{name}</td>
               <td class='text-center'>
-                <button class="btn btn-square btn-text btn-sm"
+                <button class="btn btn-square btn-ghost btn-sm"
                   onClick={() => props.filters(data => {
                     const sort = requireNonNull<FilterSortAttribute>(data[name].sort)
                     sort.order = sort.order === "asc" ? "desc" : "asc"
@@ -106,7 +106,7 @@ function ColumnControlSettings(props: {
 }) {
   return (
     <div class="overflow-x-auto">
-      <table class="table table-pin-rows table-pin-cols">
+      <table class="table table-pin-rows">
         <thead>
           <tr>
             <th></th>

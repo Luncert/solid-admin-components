@@ -1,10 +1,16 @@
 import { stampedBucket } from 'solid-new-bucket'
-import { Filterbar, Filter, FilterAttributes, Table } from '../../../../src'
+import { Filterbar, Filter, FilterAttributes, Table, TableActions, EditAction } from '../../../../src'
 import FilterbarSettings from '../../../../src/components/FilterbarSettings'
+import { AiFillCaretLeft, AiFillCaretRight } from 'solid-icons/ai'
 
 interface Model {
   id?: string
-  selection?: string
+  name?: string
+  job?: string
+  company?: string
+  location?: string
+  lastLogin?: string
+  favoriteColor?: string
 }
 
 export default function BasicList() {
@@ -21,7 +27,8 @@ export default function BasicList() {
         visible: true
       }
     },
-    selection: {
+    name: {},
+    job: {
       match: {
         operator: "like",
       },
@@ -36,7 +43,11 @@ export default function BasicList() {
         modelName: "externalView",
         fieldName: "externalView.fieldName"
       }
-    }
+    },
+    company: {},
+    location: {},
+    lastLogin: {},
+    favoriteColor: {}
   })
 
   return (
@@ -48,7 +59,7 @@ export default function BasicList() {
             <input type="text" class="grow" />
           </label>
         </Filter>
-        <Filter name="selection" class='col-span-2'>
+        <Filter name="job" class='col-span-2'>
           <select class="select select-bordered select-sm w-full">
             <option disabled selected>Who shot first?</option>
             <option>Han Solo</option>
@@ -60,217 +71,237 @@ export default function BasicList() {
         </div>
         <FilterbarSettings class='col-start-8 flex justify-end' filters={filters} />
       </Filterbar>
-      <Table>
-        
+      <Table filters={filters()} data={tableData} actions={
+        <TableActions>
+          <EditAction>
+            <button class="btn btn-sm btn-ghost">EDIT</button>
+          </EditAction>
+          <button class="btn btn-sm btn-ghost">SELECT</button>
+          <div class="join">
+            <button class="join-item btn btn-sm"><AiFillCaretLeft /></button>
+            <button class="join-item btn btn-sm">1</button>
+            <button class="join-item btn btn-sm btn-active">2</button>
+            <button class="join-item btn btn-sm btn-disabled">...</button>
+            <button class="join-item btn btn-sm">3</button>
+            <button class="join-item btn btn-sm">4</button>
+            <button class="join-item btn btn-sm"><AiFillCaretRight /></button>
+          </div>
+        </TableActions>
+      }>
       </Table>
-      <div class='shrink w-full h-full overflow-x-auto'>
-        <table class="table table-pin-rows table-pin-cols">
-          <thead>
-            <tr>
-              <th></th> 
-              <th>Name</th> 
-              <th>Job</th> 
-              <th>company</th> 
-              <th>location</th> 
-              <th>Last Login</th> 
-              <th>Favorite Color</th>
-            </tr>
-          </thead> 
-          <tbody>
-            <tr class="hover">
-              <th>1</th> 
-              <td>Cy Ganderton</td> 
-              <td>Quality Control Specialist</td> 
-              <td>Littel, Schaden and Vandervort</td> 
-              <td>Canada</td> 
-              <td>12/16/2020</td> 
-              <td>Blue</td>
-            </tr>
-            <tr>
-              <th>2</th> 
-              <td>Hart Hagerty</td> 
-              <td>Desktop Support Technician</td> 
-              <td>Zemlak, Daniel and Leannon</td> 
-              <td>United States</td> 
-              <td>12/5/2020</td> 
-              <td>Purple</td>
-            </tr>
-            <tr>
-              <th>3</th> 
-              <td>Brice Swyre</td> 
-              <td>Tax Accountant</td> 
-              <td>Carroll Group</td> 
-              <td>China</td> 
-              <td>8/15/2020</td> 
-              <td>Red</td>
-            </tr>
-            <tr>
-              <th>4</th> 
-              <td>Marjy Ferencz</td> 
-              <td>Office Assistant I</td> 
-              <td>Rowe-Schoen</td> 
-              <td>Russia</td> 
-              <td>3/25/2021</td> 
-              <td>Crimson</td>
-            </tr>
-            <tr>
-              <th>5</th> 
-              <td>Yancy Tear</td> 
-              <td>Community Outreach Specialist</td> 
-              <td>Wyman-Ledner</td> 
-              <td>Brazil</td> 
-              <td>5/22/2020</td> 
-              <td>Indigo</td>
-            </tr>
-            <tr>
-              <th>6</th> 
-              <td>Irma Vasilik</td> 
-              <td>Editor</td> 
-              <td>Wiza, Bins and Emard</td> 
-              <td>Venezuela</td> 
-              <td>12/8/2020</td> 
-              <td>Purple</td>
-            </tr>
-            <tr>
-              <th>7</th> 
-              <td>Meghann Durtnal</td> 
-              <td>Staff Accountant IV</td> 
-              <td>Schuster-Schimmel</td> 
-              <td>Philippines</td> 
-              <td>2/17/2021</td> 
-              <td>Yellow</td>
-            </tr>
-            <tr>
-              <th>8</th> 
-              <td>Sammy Seston</td> 
-              <td>Accountant I</td> 
-              <td>O'Hara, Welch and Keebler</td> 
-              <td>Indonesia</td> 
-              <td>5/23/2020</td> 
-              <td>Crimson</td>
-            </tr>
-            <tr>
-              <th>9</th> 
-              <td>Lesya Tinham</td> 
-              <td>Safety Technician IV</td> 
-              <td>Turner-Kuhlman</td> 
-              <td>Philippines</td> 
-              <td>2/21/2021</td> 
-              <td>Maroon</td>
-            </tr>
-            <tr>
-              <th>10</th> 
-              <td>Zaneta Tewkesbury</td> 
-              <td>VP Marketing</td> 
-              <td>Sauer LLC</td> 
-              <td>Chad</td> 
-              <td>6/23/2020</td> 
-              <td>Green</td>
-            </tr>
-            <tr>
-              <th>11</th> 
-              <td>Andy Tipple</td> 
-              <td>Librarian</td> 
-              <td>Hilpert Group</td> 
-              <td>Poland</td> 
-              <td>7/9/2020</td> 
-              <td>Indigo</td>
-            </tr>
-            <tr>
-              <th>12</th> 
-              <td>Sophi Biles</td> 
-              <td>Recruiting Manager</td> 
-              <td>Gutmann Inc</td> 
-              <td>Indonesia</td> 
-              <td>2/12/2021</td> 
-              <td>Maroon</td>
-            </tr>
-            <tr>
-              <th>13</th> 
-              <td>Florida Garces</td> 
-              <td>Web Developer IV</td> 
-              <td>Gaylord, Pacocha and Baumbach</td> 
-              <td>Poland</td> 
-              <td>5/31/2020</td> 
-              <td>Purple</td>
-            </tr>
-            <tr>
-              <th>14</th> 
-              <td>Maribeth Popping</td> 
-              <td>Analyst Programmer</td> 
-              <td>Deckow-Pouros</td> 
-              <td>Portugal</td> 
-              <td>4/27/2021</td> 
-              <td>Aquamarine</td>
-            </tr>
-            <tr>
-              <th>15</th> 
-              <td>Moritz Dryburgh</td> 
-              <td>Dental Hygienist</td> 
-              <td>Schiller, Cole and Hackett</td> 
-              <td>Sri Lanka</td> 
-              <td>8/8/2020</td> 
-              <td>Crimson</td>
-            </tr>
-            <tr>
-              <th>16</th> 
-              <td>Reid Semiras</td> 
-              <td>Teacher</td> 
-              <td>Sporer, Sipes and Rogahn</td> 
-              <td>Poland</td> 
-              <td>7/30/2020</td> 
-              <td>Green</td>
-            </tr>
-            <tr>
-              <th>17</th> 
-              <td>Alec Lethby</td> 
-              <td>Teacher</td> 
-              <td>Reichel, Glover and Hamill</td> 
-              <td>China</td> 
-              <td>2/28/2021</td> 
-              <td>Khaki</td>
-            </tr>
-            <tr>
-              <th>18</th> 
-              <td>Aland Wilber</td> 
-              <td>Quality Control Specialist</td> 
-              <td>Kshlerin, Rogahn and Swaniawski</td> 
-              <td>Czech Republic</td> 
-              <td>9/29/2020</td> 
-              <td>Purple</td>
-            </tr>
-            <tr>
-              <th>19</th> 
-              <td>Teddie Duerden</td> 
-              <td>Staff Accountant III</td> 
-              <td>Pouros, Ullrich and Windler</td> 
-              <td>France</td> 
-              <td>10/27/2020</td> 
-              <td>Aquamarine</td>
-            </tr>
-            <tr>
-              <th>20</th> 
-              <td>Lorelei Blackstone</td> 
-              <td>Data Coordiator</td> 
-              <td>Witting, Kutch and Greenfelder</td> 
-              <td>Kazakhstan</td> 
-              <td>6/3/2020</td> 
-              <td>Red</td>
-            </tr>
-          </tbody> 
-          <tfoot>
-            <tr>
-              <th></th> 
-              <th>Name</th> 
-              <th>Job</th> 
-              <th>company</th> 
-              <th>location</th> 
-              <th>Last Login</th> 
-              <th>Favorite Color</th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
     </div>
   )
 }
+
+const tableData = [
+  {
+    "id": "1",
+    "name": "Cy Ganderton",
+    "job": "Quality Control Specialist",
+    "company": "Littel",
+    "location": " Schaden and Vandervort",
+    "lastLogin": "Canada",
+    "favoriteColor": "12/16/2020",
+    "FIELD8": "Blue"
+  },
+  {
+    "id": "2",
+    "name": "Hart Hagerty",
+    "job": "Desktop Support Technician",
+    "company": "Zemlak",
+    "location": " Daniel and Leannon",
+    "lastLogin": "United States",
+    "favoriteColor": "12/5/2020",
+    "FIELD8": "Purple"
+  },
+  {
+    "id": "3",
+    "name": "Brice Swyre",
+    "job": "Tax Accountant",
+    "company": "Carroll Group",
+    "location": "China",
+    "lastLogin": "8/15/2020",
+    "favoriteColor": "Red",
+    "FIELD8": ""
+  },
+  {
+    "id": "4",
+    "name": "Marjy Ferencz",
+    "job": "Office Assistant I",
+    "company": "Rowe-Schoen",
+    "location": "Russia",
+    "lastLogin": "3/25/2021",
+    "favoriteColor": "Crimson",
+    "FIELD8": ""
+  },
+  {
+    "id": "5",
+    "name": "Yancy Tear",
+    "job": "Community Outreach Specialist",
+    "company": "Wyman-Ledner",
+    "location": "Brazil",
+    "lastLogin": "5/22/2020",
+    "favoriteColor": "Indigo",
+    "FIELD8": ""
+  },
+  {
+    "id": "6",
+    "name": "Irma Vasilik",
+    "job": "Editor",
+    "company": "Wiza",
+    "location": " Bins and Emard",
+    "lastLogin": "Venezuela",
+    "favoriteColor": "12/8/2020",
+    "FIELD8": "Purple"
+  },
+  {
+    "id": "7",
+    "name": "Meghann Durtnal",
+    "job": "Staff Accountant IV",
+    "company": "Schuster-Schimmel",
+    "location": "Philippines",
+    "lastLogin": "2/17/2021",
+    "favoriteColor": "Yellow",
+    "FIELD8": ""
+  },
+  {
+    "id": "8",
+    "name": "Sammy Seston",
+    "job": "Accountant I",
+    "company": "O'Hara",
+    "location": " Welch and Keebler",
+    "lastLogin": "Indonesia",
+    "favoriteColor": "5/23/2020",
+    "FIELD8": "Crimson"
+  },
+  {
+    "id": "9",
+    "name": "Lesya Tinham",
+    "job": "Safety Technician IV",
+    "company": "Turner-Kuhlman",
+    "location": "Philippines",
+    "lastLogin": "2/21/2021",
+    "favoriteColor": "Maroon",
+    "FIELD8": ""
+  },
+  {
+    "id": "10",
+    "name": "Zaneta Tewkesbury",
+    "job": "VP Marketing",
+    "company": "Sauer LLC",
+    "location": "Chad",
+    "lastLogin": "6/23/2020",
+    "favoriteColor": "Green",
+    "FIELD8": ""
+  },
+  {
+    "id": "11",
+    "name": "Andy Tipple",
+    "job": "Librarian",
+    "company": "Hilpert Group",
+    "location": "Poland",
+    "lastLogin": "7/9/2020",
+    "favoriteColor": "Indigo",
+    "FIELD8": ""
+  },
+  {
+    "id": "12",
+    "name": "Sophi Biles",
+    "job": "Recruiting Manager",
+    "company": "Gutmann Inc",
+    "location": "Indonesia",
+    "lastLogin": "2/12/2021",
+    "favoriteColor": "Maroon",
+    "FIELD8": ""
+  },
+  {
+    "id": "13",
+    "name": "Florida Garces",
+    "job": "Web Developer IV",
+    "company": "Gaylord",
+    "location": " Pacocha and Baumbach",
+    "lastLogin": "Poland",
+    "favoriteColor": "5/31/2020",
+    "FIELD8": "Purple"
+  },
+  {
+    "id": "14",
+    "name": "Maribeth Popping",
+    "job": "Analyst Programmer",
+    "company": "Deckow-Pouros",
+    "location": "Portugal",
+    "lastLogin": "4/27/2021",
+    "favoriteColor": "Aquamarine",
+    "FIELD8": ""
+  },
+  {
+    "id": "15",
+    "name": "Moritz Dryburgh",
+    "job": "Dental Hygienist",
+    "company": "Schiller",
+    "location": " Cole and Hackett",
+    "lastLogin": "Sri Lanka",
+    "favoriteColor": "8/8/2020",
+    "FIELD8": "Crimson"
+  },
+  {
+    "id": "16",
+    "name": "Reid Semiras",
+    "job": "Teacher",
+    "company": "Sporer",
+    "location": " Sipes and Rogahn",
+    "lastLogin": "Poland",
+    "favoriteColor": "7/30/2020",
+    "FIELD8": "Green"
+  },
+  {
+    "id": "17",
+    "name": "Alec Lethby",
+    "job": "Teacher",
+    "company": "Reichel",
+    "location": " Glover and Hamill",
+    "lastLogin": "China",
+    "favoriteColor": "2/28/2021",
+    "FIELD8": "Khaki"
+  },
+  {
+    "id": "18",
+    "name": "Aland Wilber",
+    "job": "Quality Control Specialist",
+    "company": "Kshlerin",
+    "location": " Rogahn and Swaniawski",
+    "lastLogin": "Czech Republic",
+    "favoriteColor": "9/29/2020",
+    "FIELD8": "Purple"
+  },
+  {
+    "id": "19",
+    "name": "Teddie Duerden",
+    "job": "Staff Accountant III",
+    "company": "Pouros",
+    "location": " Ullrich and Windler",
+    "lastLogin": "France",
+    "favoriteColor": "10/27/2020",
+    "FIELD8": "Aquamarine"
+  },
+  {
+    "id": "20",
+    "name": "Lorelei Blackstone",
+    "job": "Data Coordinator",
+    "company": "Witting",
+    "location": " Kutch and Greenfelder",
+    "lastLogin": "Kazakhstan",
+    "favoriteColor": "6/3/2020",
+    "FIELD8": "Red"
+  },
+  {
+    "id": "Name",
+    "name": "Job",
+    "job": "company",
+    "company": "location",
+    "location": "Last Login",
+    "lastLogin": "Favorite Color",
+    "favoriteColor": "",
+    "FIELD8": ""
+  }
+]
