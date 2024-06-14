@@ -5,6 +5,8 @@ declare global {
 
   type Nullable<T> = T | null
 
+  type VoidFunc = () => void
+
   type CustomEventHandler = (evt: CustomEvent) => void | Promise<void>;
   
   interface CustomEventRegistry {

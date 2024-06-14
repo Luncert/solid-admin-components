@@ -1,54 +1,11 @@
 import { stampedBucket } from 'solid-new-bucket'
-import { Filterbar, Filter, FilterAttributes, Table, TableActions, EditAction } from '../../../../src'
+import { Filterbar, Filter, Table, TableActions, EditAction } from '../../../../src'
 import FilterbarSettings from '../../../../src/components/FilterbarSettings'
 import { AiFillCaretLeft, AiFillCaretRight } from 'solid-icons/ai'
-
-interface Model {
-  id?: string
-  name?: string
-  job?: string
-  company?: string
-  location?: string
-  lastLogin?: string
-  favoriteColor?: string
-}
+import { model } from './BasicListModel'
 
 export default function BasicList() {
-  const filters = stampedBucket<FilterAttributes<Model>>({
-    id: {
-      match: {
-        operator: "=",
-      },
-      sort: {
-        order: "asc",
-        active: true
-      },
-      columnControl: {
-        visible: true
-      }
-    },
-    name: {},
-    job: {
-      match: {
-        operator: "like",
-      },
-      sort: {
-        order: "asc",
-        active: true
-      },
-      columnControl: {
-        visible: true
-      },
-      associate: {
-        modelName: "externalView",
-        fieldName: "externalView.fieldName"
-      }
-    },
-    company: {},
-    location: {},
-    lastLogin: {},
-    favoriteColor: {}
-  })
+  const filters = stampedBucket(model)
 
   return (
     <div class="flex flex-col w-full h-full">
